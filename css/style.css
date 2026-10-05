@@ -1,0 +1,879 @@
+/* ==========================================================================
+   HAIR ATELIER Gg - style.css
+
+   目次
+   01. デザイントークン(CSS変数)
+   02. リセット / ベース
+   03. 共通パーツ(見出し・ラベル・区切りアイコン・ボタン)
+   04. ヘッダー / ナビゲーション
+   05. ヒーロー
+   06. コンセプト
+   07. こだわり
+   08. スタッフ
+   09. メニュー
+   10. ギャラリー
+   11. ホームケア(oggi otto)
+   12. お知らせ・ブログ
+   13. アクセス
+   14. フッター
+   15. レスポンシブ(860px以下)
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   01. デザイントークン
+   色・余白などの「決めごと」をここに集約。変更したいときはここだけ直せばOK。
+   -------------------------------------------------------------------------- */
+:root {
+  /* カラー */
+  --plaster:      #F3EDDD;   /* ベース背景(生成り) */
+  --plaster-deep: #EAE2CC;   /* 少し濃い生成り(セクションの切り替え用) */
+  --paper:        #FAF6EA;   /* 明るい生成り(カード・交互背景) */
+  --ink:          #221E19;   /* 見出し・濃い文字(純黒ではなく黒茶) */
+  --ink-soft:     #5C564A;   /* 本文・補足テキスト */
+  --brick:        #A6483C;   /* レンガ色 */
+  --brick-deep:   #7C332A;   /* 英字ラベル・カテゴリ見出し */
+  --sage:         #5B6E45;   /* セージグリーン */
+  --sage-deep:    #455235;   /* 濃いセージ(注記・タグ) */
+  --brass:        #AD8B4E;   /* 真鍮色(装飾線) */
+  --gold-light:   #E8C98F;   /* 写真の上に重ねる淡い金色 */
+  --line:         rgba(34, 30, 25, 0.14); /* 区切り線 */
+
+  /* フォント */
+  --font-serif: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-sans:  'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
+  --font-en:    'EB Garamond', Georgia, serif;
+  --font-hand:  'Klee One', 'Yu Mincho', serif; /* 手書き風: ポイント使用のみ */
+
+  /* レイアウト */
+  --container: 1120px;      /* コンテンツ最大幅 */
+  --gutter: 40px;           /* 左右の余白(スマホでは22px) */
+  --section-pad: 104px;     /* セクション上下の余白(スマホでは64px) */
+  --radius: 2px;            /* 角丸(控えめに) */
+  --header-h: 64px;         /* ヘッダーの高さの目安(アンカー位置の調整に使用) */
+}
+
+
+/* --------------------------------------------------------------------------
+   02. リセット / ベース
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  /* ページ内リンクで移動したとき、固定ヘッダーに見出しが隠れないようにする */
+  scroll-padding-top: calc(var(--header-h) + 8px);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 動きを減らす設定のユーザーにはスムーススクロールを使わない */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--plaster);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+
+/* 日本語の折り返しを自然にする設定(未対応のブラウザでは無視されるだけ)
+   - word-break: auto-phrase … 文節の区切りで改行する
+   - text-wrap: pretty       … 行末に1文字だけ残る「ぶら下がり」を避ける
+   - text-wrap: balance      … 見出しの改行位置を左右均等にする */
+body { line-break: strict; word-break: auto-phrase; }
+p, li, dd { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+button { font: inherit; color: inherit; }
+
+/* hidden属性を他のdisplay指定より優先させる(メニューの絞り込みで使用) */
+[hidden] { display: none !important; }
+
+/* 画面には出さず、スクリーンリーダーにだけ読ませるテキスト */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* キーボード操作時のフォーカス表示(マウス操作では出ない) */
+:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 3px;
+}
+
+/* 「本文へスキップ」リンク。Tabキーを押したときだけ現れる */
+.skip-link {
+  position: absolute;
+  left: 12px; top: -60px;
+  z-index: 100;
+  padding: 10px 18px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 13px;
+}
+.skip-link:focus { top: 12px; }
+
+/* SVGアイコンのスプライト(定義だけ置いておく入れ物)。画面には出さない */
+.svg-sprite {
+  position: absolute;
+  width: 0; height: 0;
+  overflow: hidden;
+}
+
+/* 写真を枠いっぱいに敷き詰める共通クラス */
+.cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* --------------------------------------------------------------------------
+   03. 共通パーツ
+   -------------------------------------------------------------------------- */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section { padding: var(--section-pad) 0; }
+.section--paper { background: var(--paper); }
+.section--deep  { background: var(--plaster-deep); }
+/* 同じ背景色のセクションが続く箇所(コンセプト→こだわり / ホームケア→お知らせ)は、
+   余白が二重になって間延びするので、2つ目の上余白をなくす */
+.section--paper + .section--paper,
+.section--deep + .section--deep { padding-top: 0; }
+
+.center { text-align: center; }
+.serif  { font-family: var(--font-serif); font-weight: 500; }
+.handwrite { font-family: var(--font-hand); font-weight: 400; }
+
+/* 英字の小さなラベル(CONCEPT, MENU など) */
+.eyebrow {
+  display: block;
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brick-deep);
+}
+
+/* セクション見出し(h2) */
+.section-title {
+  margin-top: 6px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* セクション見出しの上に置く、ペンダントランプの線画 */
+.divider {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.motif {
+  width: 36px;
+  height: 40px;
+  opacity: 0.85;
+}
+
+/* ボタン */
+.cta-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 14px 34px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius);
+  transition: background-color 0.25s;
+}
+.cta-btn:hover { background: var(--brick-deep); }
+
+
+/* --------------------------------------------------------------------------
+   04. ヘッダー / ナビゲーション
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;           /* スクロールしても上に張り付く */
+  top: 0;
+  z-index: 50;
+  background: rgba(243, 237, 221, 0.94);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 16px var(--gutter);
+}
+.site-logo img {
+  height: 30px;
+  width: auto;
+}
+
+.global-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 28px;
+}
+.global-nav a {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  transition: color 0.2s;
+}
+.global-nav a:hover { color: var(--brick-deep); }
+
+/* ハンバーガーボタン(スマホ幅のときだけ表示。PCでは非表示) */
+.nav-toggle {
+  display: none;
+  width: 44px; height: 44px;       /* タップしやすい大きさ */
+  margin-right: -10px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 24px; height: 1.5px;
+  background: var(--ink);
+  transition: transform 0.25s, opacity 0.2s;
+}
+/* 開いているときは「×」の形にする */
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+
+/* --------------------------------------------------------------------------
+   05. ヒーロー(最初の大きな写真エリア)
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  height: 640px;
+  overflow: hidden;
+  background: #6b4a3c; /* 画像が読み込まれるまでの下地(レンガ色に近い色) */
+}
+.hero-img {
+  position: absolute;
+  inset: 0;
+  filter: saturate(0.92) brightness(0.9);
+}
+/* 写真の上に重ねる暗めのグラデーション(文字を読みやすくするため) */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(34, 30, 25, 0.15) 0%, rgba(34, 30, 25, 0.58) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  text-align: center;
+}
+.hero-content .eyebrow {
+  margin-bottom: 18px;
+  color: var(--gold-light);
+}
+.hero-title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 46px;
+  line-height: 1.55;
+  color: var(--paper);
+}
+.hero-sub {
+  margin-top: 22px;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #EFE9D8;
+}
+/* 右下のペンダントランプ(大) */
+.hero-motif {
+  position: absolute;
+  z-index: 2;
+  right: 48px;
+  bottom: 100px;
+  width: 70px;
+  height: 98px;
+  opacity: 0.92;
+}
+/* 左下の手書き風スタンプ */
+.hero-stamp {
+  position: absolute;
+  z-index: 2;
+  left: 48px;
+  bottom: 40px;
+  width: 88px; height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(232, 201, 143, 0.7);
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--gold-light);
+  transform: rotate(-8deg);
+}
+
+
+/* --------------------------------------------------------------------------
+   06. コンセプト
+   -------------------------------------------------------------------------- */
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+  margin-top: 70px;
+}
+.concept-photo {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.concept-text h3 {
+  margin-bottom: 24px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.7;
+}
+.concept-text p {
+  margin-bottom: 16px;
+  color: var(--ink-soft);
+}
+
+
+/* --------------------------------------------------------------------------
+   07. こだわり
+   -------------------------------------------------------------------------- */
+.dedication-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  margin-top: 70px;
+}
+.dedication-card { text-align: center; }
+.dedication-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px; height: 64px;
+  margin: 0 auto 22px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+.dedication-icon svg { width: 28px; height: 28px; }
+.dedication-card h3 {
+  margin-bottom: 12px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 18px;
+}
+.dedication-card p {
+  padding: 0 6px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+
+/* --------------------------------------------------------------------------
+   08. スタッフ
+   -------------------------------------------------------------------------- */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  max-width: 640px;
+  margin: 70px auto 0;
+}
+.staff-card { text-align: center; }
+.staff-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px; height: 170px;
+  margin: 0 auto 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #D8CDB4, #AD9C79);
+}
+/* 本番の写真に差し替えるときは、<img class="cover-img"> をこの中に入れる */
+.staff-photo-placeholder {
+  padding: 0 20px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.staff-card h3 {
+  margin-bottom: 6px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 19px;
+}
+.staff-role {
+  margin-bottom: 14px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--brick-deep);
+}
+.staff-comment {
+  padding: 0 6px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+
+/* --------------------------------------------------------------------------
+   09. メニュー
+   -------------------------------------------------------------------------- */
+/* 絞り込みタブ。JSが動く環境(.js)のときだけ表示する */
+.menu-tabs {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 56px 0 50px;
+}
+.js .menu-tabs { display: flex; }
+.menu-tab {
+  padding: 9px 22px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.menu-tab:hover { border-color: var(--ink); }
+.menu-tab.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.menu-list { margin-top: 56px; }
+.js .menu-list { margin-top: 0; }
+
+.menu-category {
+  max-width: 760px;
+  margin: 0 auto 48px;
+}
+.menu-category:last-child { margin-bottom: 0; }
+.menu-category-title {
+  margin-bottom: 6px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--brick-deep);
+}
+/* カテゴリ名の横に添える英字(旧サイトの見出しを引き継いだもの) */
+.menu-category-en {
+  margin-left: 12px;
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+}
+.menu-category-sub {
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+/* 注記は1つずつのまとまりにして、途中で折り返さない(「※」だけ行末に残るのを防ぐ) */
+.menu-note-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.menu-item-name { font-size: 16px; }
+/* 「髪質改善」メニューの目印(名前の前に付ける小さなタグ) */
+.menu-badge {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 0 9px;
+  border: 1px solid var(--sage);
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  vertical-align: 1px;
+  color: var(--sage-deep);
+}
+.menu-item-desc {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.menu-item-price {
+  padding-left: 20px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  white-space: nowrap;
+  text-align: right;
+}
+.menu-item-min {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.menu-note {
+  margin-top: 20px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+
+/* --------------------------------------------------------------------------
+   10. ギャラリー
+   -------------------------------------------------------------------------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 14px;
+  margin-top: 70px;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.gallery-item--tall { grid-row: span 2; }   /* 縦に2マス分 */
+.gallery-item--wide { grid-column: span 2; } /* 横に2マス分(最下段の隙間を埋める) */
+.gallery-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 14px 16px 12px;
+  background: linear-gradient(0deg, rgba(34, 30, 25, 0.68), transparent);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+}
+
+
+/* --------------------------------------------------------------------------
+   11. ホームケア(oggi otto)
+   -------------------------------------------------------------------------- */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 70px;
+  align-items: center;
+  margin-top: 70px;
+}
+.products-photo {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.products-text h3 {
+  margin-bottom: 20px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.7;
+}
+.products-text p {
+  margin-bottom: 14px;
+  color: var(--ink-soft);
+}
+.products-points { margin-top: 22px; }
+.products-points li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+/* 箇条書きの点(真鍮色) */
+.products-points li::before {
+  content: "";
+  flex: none;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brass);
+  transform: translateY(-2px);
+}
+
+
+/* --------------------------------------------------------------------------
+   12. お知らせ・ブログ
+   -------------------------------------------------------------------------- */
+.info-hub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+.info-col-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.info-col-title h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 20px;
+}
+.info-col-title a {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--brick-deep);
+}
+.info-col-title a:hover { text-decoration: underline; }
+
+/* お知らせ */
+.news-item {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.news-date {
+  font-family: var(--font-en);
+  font-size: 14px;
+  white-space: nowrap;
+  color: var(--ink-soft);
+}
+.news-tag {
+  padding: 2px 10px;
+  border: 1px solid var(--sage);
+  border-radius: 12px;
+  font-size: 12px;
+  white-space: nowrap;
+  color: var(--sage-deep);
+}
+.news-title { font-size: 14px; }
+
+/* ブログ */
+.blog-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.blog-thumb {
+  flex: none;
+  width: 76px; height: 76px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: linear-gradient(155deg, #DCD3BE, #B9AD8F);
+}
+.blog-title {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.blog-date {
+  font-family: var(--font-en);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+
+/* --------------------------------------------------------------------------
+   13. アクセス
+   -------------------------------------------------------------------------- */
+.access-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 70px;
+  align-items: start;
+  margin-top: 70px;
+}
+.info-block { margin-bottom: 26px; }
+.info-label {
+  margin-bottom: 6px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--brick-deep);
+}
+.info-value {
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.info-value a { text-decoration: underline; text-underline-offset: 3px; }
+.reserve-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--sage-deep);
+}
+.access-photo {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+
+/* --------------------------------------------------------------------------
+   14. フッター
+   -------------------------------------------------------------------------- */
+.site-footer {
+  padding: 56px var(--gutter) 40px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.footer-logo {
+  height: 26px;
+  width: auto;
+  margin: 0 auto 10px;
+}
+.site-footer p { font-size: 13px; color: var(--ink-soft); }
+.copyright {
+  margin-top: 30px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+
+/* --------------------------------------------------------------------------
+   15. レスポンシブ(画面幅 860px 以下 = タブレット縦・スマホ)
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  :root {
+    --gutter: 22px;
+    --section-pad: 64px;
+    --header-h: 60px;
+  }
+
+  /* ヘッダー: JSが使える環境ではハンバーガーに切り替える */
+  .js .nav-toggle { display: flex; }
+  .js .global-nav {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    padding: 4px var(--gutter) 16px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .js .global-nav.is-open { display: block; }
+  .js .global-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  .js .global-nav a {
+    display: block;
+    padding: 15px 2px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .js .global-nav li:last-child a { border-bottom: 0; }
+
+  /* ヒーロー(写真は横長なので、スマホでは店名の看板が見える位置に寄せる) */
+  .hero { height: 540px; }
+  .hero-img { object-position: 66% center; }
+  .hero-title { font-size: 32px; }
+  .hero-sub { font-size: 14px; }
+  .hero-motif {
+    right: 20px; bottom: 112px;
+    width: 52px; height: 73px;
+  }
+  .hero-stamp {
+    left: 20px; bottom: 24px;
+    width: 76px; height: 76px;
+    font-size: 11px;
+  }
+
+  .section-title { font-size: 26px; }
+
+  /* 2〜3カラムのレイアウトは1カラムに */
+  .concept-grid,
+  .products-grid,
+  .access-grid,
+  .info-hub-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .concept-grid, .products-grid, .access-grid { margin-top: 48px; }
+  .dedication-grid { grid-template-columns: 1fr; gap: 44px; margin-top: 48px; }
+  .staff-grid { grid-template-columns: 1fr; gap: 50px; margin-top: 48px; }
+
+  .concept-text h3 { font-size: 23px; }
+
+  /* ギャラリーは2列。タイルの組み合わせを整えて隙間が出ないようにする */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 170px;
+    margin-top: 48px;
+  }
+  .gallery-item--tall { grid-row: span 1; }
+  .gallery-item--wide { grid-column: span 1; }   /* 2列×3段できれいに収まるので特別扱い不要 */
+
+  /* メニュー */
+  .menu-tabs { margin: 40px 0 36px; }
+  .menu-tab { padding: 8px 16px; font-size: 13px; }
+  .menu-item-name { font-size: 15px; }
+  .menu-category-en { display: block; margin: 2px 0 0; }
+
+  /* お知らせ: 日付とタグを1行目、タイトルを2行目に */
+  .news-item { flex-wrap: wrap; gap: 6px 14px; }
+  .news-title { width: 100%; }
+}
+
+
+/* 〔共有用の仮スタイル〕ヒーロー下中央の「Scroll」表示 */
+.hero-scroll {
+  position: absolute; z-index: 2; left: 50%; bottom: 14px;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-family: var(--font-en); font-style: italic; font-size: 12px; letter-spacing: 0.22em;
+  color: var(--gold-light);
+}
+.hero-scroll::after { content: ""; width: 1px; height: 28px; background: var(--gold-light); opacity: .8; }
+@media (max-width: 860px) { .hero-scroll { display: none; } }

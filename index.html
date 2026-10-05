@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- JSが使える環境では <html> に "js" クラスを付ける(CSSでの出し分けに使用) -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <title>HAIR ATELIER Gg | 完全マンツーマンのプライベートヘアサロン</title>
+  <meta name="description" content="赤レンガの外観と、北欧×アンティークの落ち着いた店内。完全マンツーマンのプライベートヘアサロン HAIR ATELIER Gg。丁寧なカウンセリングと、髪と地肌にやさしいオーガニック薬剤で、あなただけの静かな時間を。">
+  <!-- TODO(公開前): タイトルと説明文に「エリア名(例: ○○駅)」「美容室」を入れるか検討 → SEOチェックの段階で最終調整 -->
+
+  <!-- ★★★ テスト環境用: 検索エンジンに載せない設定 ★★★
+       TODO(公開時に必ず削除): 本番公開のときにこの1行を消さないと、Google等に永久に表示されません -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta name="theme-color" content="#F3EDDD">
+
+  <!-- OGP(SNSでURLを共有したときの表示) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="HAIR ATELIER Gg">
+  <meta property="og:title" content="HAIR ATELIER Gg | 完全マンツーマンのプライベートヘアサロン">
+  <meta property="og:description" content="赤レンガの外観と、北欧×アンティークの落ち着いた店内。あなただけの静かな時間を。">
+  <!-- TODO(公開時): og:image と og:url は https:// から始まる絶対URLで追加する
+  <meta property="og:image" content="https://(ドメイン)/images/ogp.jpg">
+  <meta property="og:url" content="https://(ドメイン)/">
+  <link rel="canonical" href="https://(ドメイン)/">
+  -->
+
+  <!-- ファビコン -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Google Fonts(display=swap: フォントの読み込み中も文字を先に表示する) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&family=EB+Garamond:ital@1&family=Klee+One:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- TODO(公開時): 構造化データ(Googleに店舗情報を伝える)。実データが確定してから有効化する
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "HAIR ATELIER Gg",
+    "image": "https://(ドメイン)/images/hero-1600.jpg",
+    "url": "https://(ドメイン)/",
+    "telephone": "(電話番号)",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": "(郵便番号)",
+      "addressRegion": "(都道府県)",
+      "addressLocality": "(市区町村)",
+      "streetAddress": "(番地・建物名)",
+      "addressCountry": "JP"
+    },
+    "openingHours": ["(例: Tu-Sa 10:00-19:00)"]
+  }
+  </script>
+  -->
+</head>
+
+<body id="top">
+
+<!-- SVGアイコンの定義(ペンダントランプの線画)。各セクションの見出し上で <use> で呼び出す -->
+<svg class="svg-sprite" aria-hidden="true" focusable="false">
+  <symbol id="icon-lamp" viewBox="0 0 30 34" fill="none">
+    <line x1="15" y1="0" x2="15" y2="9" stroke="#AD8B4E" stroke-width="1.1"/>
+    <path d="M6 16 L15 9 L24 16 Z" stroke="#AD8B4E" stroke-width="1.1" stroke-linejoin="round"/>
+    <circle cx="15" cy="24.5" r="6" stroke="#AD8B4E" stroke-width="1.1"/>
+    <line x1="15" y1="16" x2="15" y2="18.5" stroke="#AD8B4E" stroke-width="1.1"/>
+    <line x1="6.5" y1="24.5" x2="4" y2="24.5" stroke="#5B6E45" stroke-width="0.8"/>
+    <line x1="23.5" y1="24.5" x2="26" y2="24.5" stroke="#5B6E45" stroke-width="0.8"/>
+  </symbol>
+</svg>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<!-- ======================================================================
+     ヘッダー
+     ====================================================================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="#top">
+      <img src="images/logo.png" alt="HAIR ATELIER Gg" width="300" height="76">
+    </a>
+
+    <!-- ハンバーガーボタン(スマホ幅のみ表示) -->
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="visually-hidden">メニューを開く</span>
+    </button>
+
+    <nav id="global-nav" class="global-nav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="#concept">CONCEPT</a></li>
+        <li><a href="#staff">STAFF</a></li>
+        <li><a href="#menu">MENU</a></li>
+        <li><a href="#gallery">GALLERY</a></li>
+        <li><a href="#news">NEWS</a></li>
+        <li><a href="#blog">BLOG</a></li>
+        <li><a href="#access">ACCESS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ======================================================================
+     ヒーロー
+     ====================================================================== -->
+<section class="hero" aria-labelledby="hero-title">
+  <!-- 最初に見える大きな画像なので、遅延読み込みはせず優先して読み込む(fetchpriority) -->
+  <img class="hero-img cover-img"
+       src="images/hero-1600.jpg"
+       srcset="images/hero-960.jpg 960w, images/hero-1600.jpg 1600w"
+       sizes="100vw"
+       width="1600" height="900"
+       fetchpriority="high"
+       alt="HAIR ATELIER Gg の店舗外観。赤レンガの壁に木の看板と、えんじ色の日よけ">
+
+  <!-- 右下: ペンダントランプの線画(大)。装飾なので読み上げ対象外 -->
+  <svg class="hero-motif" viewBox="0 0 70 98" fill="none" aria-hidden="true" focusable="false">
+    <line x1="35" y1="0" x2="35" y2="26" stroke="#E8C98F" stroke-width="1.2"/>
+    <circle cx="35" cy="3" r="2.6" stroke="#E8C98F" stroke-width="1.1"/>
+    <path d="M14 46 L35 26 L56 46 Z" stroke="#E8C98F" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M20 46 L35 32 L50 46" stroke="#E8C98F" stroke-width="0.7"/>
+    <circle cx="35" cy="66" r="15" stroke="#E8C98F" stroke-width="1.2"/>
+    <line x1="35" y1="46" x2="35" y2="51" stroke="#E8C98F" stroke-width="1.2"/>
+    <line x1="35" y1="85" x2="35" y2="93" stroke="#E8C98F" stroke-width="0.8"/>
+    <line x1="15" y1="66" x2="9" y2="66" stroke="#E8C98F" stroke-width="0.8"/>
+    <line x1="55" y1="66" x2="61" y2="66" stroke="#E8C98F" stroke-width="0.8"/>
+    <line x1="24" y1="55" x2="19" y2="50" stroke="#E8C98F" stroke-width="0.7"/>
+    <line x1="46" y1="55" x2="51" y2="50" stroke="#E8C98F" stroke-width="0.7"/>
+  </svg>
+
+  <!-- 左下: 手書き風スタンプ(装飾) -->
+  <div class="hero-stamp handwrite" aria-hidden="true">quiet<br>time<br>atelier</div>
+
+  <!-- 下中央: スクロールをうながす目印(装飾) -->
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+
+  <div class="hero-content">
+    <span class="eyebrow">Private Hair Salon</span>
+    <h1 class="hero-title" id="hero-title">あなただけの、<br>静かな時間を</h1>
+    <p class="hero-sub handwrite">赤レンガの小さな入口の先に、北欧とアンティークが溶け合うアトリエ。</p>
+  </div>
+</section>
+
+<!-- ======================================================================
+     コンセプト
+     ====================================================================== -->
+<section class="section section--paper" id="concept" aria-labelledby="concept-title">
+  <div class="container">
+    <div class="divider"><svg class="motif" aria-hidden="true" focusable="false"><use href="#icon-lamp"/></svg></div>
+    <span class="eyebrow center">Concept</span>
+    <h2 class="section-title" id="concept-title">一人ひとりに寄り添う、<br>丁寧な時間</h2>
+
+    <div class="concept-grid">
+      <div class="concept-photo">
+        <img class="cover-img"
+             src="images/concept-1000.jpg"
+             srcset="images/concept-640.jpg 640w, images/concept-1000.jpg 1000w"
+             sizes="(max-width: 860px) 100vw, 485px"
+             width="1000" height="750" loading="lazy"
+             alt="アンティークのミラーと革張りのチェアが並ぶ店内">
+      </div>
+      <div class="concept-text">
+        <h3>北欧の設え、<br>アンティークの温もり</h3>
+        <p>金と黒、二つのアンティークミラー。使い込まれたレザーチェア。ミシン台を再利用したコンソール。まるでヨーロッパの古い町の片隅にある、小さなアトリエに迷い込んだような空間です。</p>
+        <p>窓辺に絡む緑、真鍮のランタン、時を刻む古い時計。ひとつひとつの小物が、静かで温かみのある時間をつくっています。</p>
+        <p>ベテランスタイリストが一人ひとりと向き合い、丁寧なカウンセリングから施術まで担当。髪と地肌にやさしい薬剤とケアで、負担の少ない仕上がりをお届けします。</p>
+        <!-- TODO(ダミー): コンセプト文はオーナー確認後に確定 -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     こだわり
+     ====================================================================== -->
+<section class="section section--paper" id="dedication" aria-labelledby="dedication-title">
+  <div class="container">
+    <div class="divider"><svg class="motif" aria-hidden="true" focusable="false"><use href="#icon-lamp"/></svg></div>
+    <span class="eyebrow center">Dedication</span>
+    <h2 class="section-title" id="dedication-title">私たちのこだわり</h2>
+
+    <!-- TODO(ダミー): 3項目の文言は仮。オーナー確認後に確定 -->
+    <div class="dedication-grid">
+      <div class="dedication-card">
+        <div class="dedication-icon" aria-hidden="true">
+          <svg viewBox="0 0 28 28" fill="none"><path d="M14 4 C14 4 6 9 6 16 C6 20.5 9.5 24 14 24 C18.5 24 22 20.5 22 16 C22 9 14 4 14 4Z" stroke="#AD8B4E" stroke-width="1.2"/><path d="M14 24 V13" stroke="#AD8B4E" stroke-width="1"/></svg>
+        </div>
+        <h3>丁寧なカウンセリング</h3>
+        <p>お悩みやなりたいイメージをじっくり伺い、髪質・骨格に合わせたご提案をいたします。</p>
+      </div>
+      <div class="dedication-card">
+        <div class="dedication-icon" aria-hidden="true">
+          <svg viewBox="0 0 28 28" fill="none"><path d="M14 5 C10 10 8 13.5 8 17 C8 20.9 10.7 24 14 24 C17.3 24 20 20.9 20 17 C20 13.5 18 10 14 5Z" stroke="#AD8B4E" stroke-width="1.2"/></svg>
+        </div>
+        <h3>髪と地肌にやさしい薬剤</h3>
+        <p>オーガニック処方のカラー・パーマ剤を使用し、負担の少ない仕上がりにこだわっています。</p>
+      </div>
+      <div class="dedication-card">
+        <div class="dedication-icon" aria-hidden="true">
+          <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="9" r="4" stroke="#AD8B4E" stroke-width="1.2"/><path d="M6 24 C6 18 9.5 15 14 15 C18.5 15 22 18 22 24" stroke="#AD8B4E" stroke-width="1.2"/></svg>
+        </div>
+        <h3>完全マンツーマン制</h3>
+        <p>他のお客様の目を気にせず、ご自身だけの静かな時間をゆっくりとお過ごしいただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     スタッフ
+     ====================================================================== -->
+<section class="section" id="staff" aria-labelledby="staff-title">
+  <div class="container">
+    <div class="divider"><svg class="motif" aria-hidden="true" focusable="false"><use href="#icon-lamp"/></svg></div>
+    <span class="eyebrow center">Stylist</span>
+    <h2 class="section-title" id="staff-title">あなたに向き合う、<br>ふたりのスタイリスト</h2>
+
+    <div class="staff-grid">
+      <article class="staff-card">
+        <div class="staff-photo"><span class="staff-photo-placeholder">写真準備中</span></div>
+        <h3>Yachi</h3>
+        <p class="staff-role">オーナースタイリスト(歴14年)</p>
+        <p class="staff-comment">《一人一人満足頂けるよう全力で担当させて頂きます》</p>
+      </article>
+      <article class="staff-card">
+        <div class="staff-photo"><span class="staff-photo-placeholder">写真準備中</span></div>
+        <h3>Yamamoto</h3>
+        <p class="staff-role">スタイリスト(歴14年)</p>
+        <p class="staff-comment">手間かからないスタイル造りを心がけています。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     メニュー
+     ====================================================================== -->
+<section class="section section--paper" id="menu" aria-labelledby="menu-title">
+  <div class="container">
+    <div class="divider"><svg class="motif" aria-hidden="true" focusable="false"><use href="#icon-lamp"/></svg></div>
+    <span class="eyebrow center">Menu</span>
+    <h2 class="section-title" id="menu-title">メニュー</h2>
+
+    <!-- カテゴリ絞り込みタブ(JSが動く環境のみ表示)。data-filter は下の data-category と対応 -->
+    <div class="menu-tabs" role="group" aria-label="メニューのカテゴリで絞り込む">
+      <button type="button" class="menu-tab is-active" data-filter="all" aria-pressed="true">すべて</button>
+      <button type="button" class="menu-tab" data-filter="cut" aria-pressed="false">カット</button>
+      <button type="button" class="menu-tab" data-filter="color" aria-pressed="false">カラー</button>
+      <button type="button" class="menu-tab" data-filter="treatment" aria-pressed="false">トリートメント</button>
+      <button type="button" class="menu-tab" data-filter="perm" aria-pressed="false">パーマ</button>
+      <button type="button" class="menu-tab" data-filter="straight" aria-pressed="false">ストレート</button>
+      <button type="button" class="menu-tab" data-filter="headspa" aria-pressed="false">ヘッドスパ</button>
+      <button type="button" class="menu-tab" data-filter="shampoo" aria-pressed="false">シャンプー・ブロー</button>
+    </div>
+
+    <!-- 旧サイトのメニュー(2021年作成)から取り込み。カテゴリ・項目名・価格は旧データのまま。
+         TODO(要確認): 価格が現在のものか、税込表記かをオーナーに確認 / 項目の補足説明(必要なら)
+         項目を足すときは <li class="menu-item" data-category="..."> をコピー。
+         data-category は上のタブの data-filter と同じ値にする。
+         髪質改善メニューは <span class="menu-badge">髪質改善</span> を名前の前に付ける -->
+    <div class="menu-list">
+
+      <div class="menu-category">
+        <h3 class="menu-category-title">カット<span class="menu-category-en" lang="en">CUT</span></h3>
+        <p class="menu-category-sub">
+          <span class="menu-note-item">※シャンプー・ブロー込</span>
+        </p>
+        <ul>
+          <li class="menu-item" data-category="cut">
+            <p class="menu-item-name">カット</p>
+            <p class="menu-item-price">¥4,700</p>
+          </li>
+          <li class="menu-item" data-category="cut">
+            <p class="menu-item-name">大学生カット</p>
+            <p class="menu-item-price">¥4,400</p>
+          </li>
+          <li class="menu-item" data-category="cut">
+            <p class="menu-item-name">高校生カット</p>
+            <p class="menu-item-price">¥4,200</p>
+          </li>
+          <li class="menu-item" data-category="cut">
+            <p class="menu-item-name">中学生カット</p>
+            <p class="menu-item-price">¥4,000</p>
+          </li>
+          <li class="menu-item" data-category="cut">
+            <p class="menu-item-name">小学生カット</p>
+            <p class="menu-item-price">¥3,700</p>
+          </li>
+          <li class="menu-item" data-category="cut">
+            <p class="menu-item-name">前髪カット</p>
+            <p class="menu-item-price">¥1,100</p>
+          </li>
+          <li class="menu-item" data-category="cut">
+            <p class="menu-item-name">眉毛カット</p>
+            <p class="menu-item-price">¥1,100</p>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <h3 class="menu-category-title">カラー<span class="menu-category-en" lang="en">COLOR</span></h3>
+        <p class="menu-category-sub">
+          <span class="menu-note-item">※ロング料金あり</span>
+          <span class="menu-note-item">※シャンプー・ブロー込</span>
+          <span class="menu-note-item">※カラー剤変更可(別途料金)</span>
+        </p>
+        <ul>
+          <li class="menu-item" data-category="color">
+            <p class="menu-item-name">艶フルカラー</p>
+            <p class="menu-item-price">¥8,800〜</p>
+          </li>
+          <li class="menu-item" data-category="color">
+            <p class="menu-item-name">ダメージレスカラー</p>
+            <p class="menu-item-price">¥10,450〜</p>
+          </li>
+          <li class="menu-item" data-category="color">
+            <p class="menu-item-name">根元2cmリタッチカラー</p>
+            <p class="menu-item-price">¥6,600〜</p>
+          </li>
+          <li class="menu-item" data-category="color">
+            <p class="menu-item-name"><span class="menu-badge">髪質改善</span>カラーエステ</p>
+            <p class="menu-item-price">¥13,750〜</p>
+          </li>
+          <li class="menu-item" data-category="color">
+            <p class="menu-item-name"><span class="menu-badge">髪質改善</span>リタッチカラーエステ</p>
+            <p class="menu-item-price">¥11,000〜</p>
+          </li>
+          <li class="menu-item" data-category="color">
+            <p class="menu-item-name"><span class="menu-badge">髪質改善</span>プレミアムカラーエステ</p>
+            <p class="menu-item-price">¥16,500〜</p>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <h3 class="menu-category-title">トリートメント<span class="menu-category-en" lang="en">TREATMENT</span></h3>
+        <p class="menu-category-sub">
+          <span class="menu-note-item">※ロング料金あり</span>
+          <span class="menu-note-item">※シャンプー・ブロー込</span>
+        </p>
+        <ul>
+          <li class="menu-item" data-category="treatment">
+            <p class="menu-item-name">水分・栄養補給トリートメント</p>
+            <p class="menu-item-price">¥3,300</p>
+          </li>
+          <li class="menu-item" data-category="treatment">
+            <p class="menu-item-name"><span class="menu-badge">髪質改善</span>ヘアエステ</p>
+            <p class="menu-item-price">¥5,500</p>
+          </li>
+          <li class="menu-item" data-category="treatment">
+            <p class="menu-item-name"><span class="menu-badge">髪質改善</span>プレミアム ヘアエステ</p>
+            <p class="menu-item-price">¥5,500</p>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <h3 class="menu-category-title">パーマ<span class="menu-category-en" lang="en">PERM</span></h3>
+        <ul>
+          <li class="menu-item" data-category="perm">
+            <p class="menu-item-name">ダメージレスコスメパーマ</p>
+            <p class="menu-item-price">¥9,900〜</p>
+          </li>
+          <li class="menu-item" data-category="perm">
+            <p class="menu-item-name">ポイントパーマ</p>
+            <p class="menu-item-price">¥3,300〜</p>
+          </li>
+          <li class="menu-item" data-category="perm">
+            <p class="menu-item-name">フロントパーマ</p>
+            <p class="menu-item-price">¥2,200〜</p>
+          </li>
+          <li class="menu-item" data-category="perm">
+            <p class="menu-item-name">デジタルパーマ</p>
+            <p class="menu-item-price">¥13,200〜</p>
+          </li>
+          <li class="menu-item" data-category="perm">
+            <p class="menu-item-name"><span class="menu-badge">髪質改善</span>パーマエステ</p>
+            <p class="menu-item-price">¥13,200〜</p>
+          </li>
+          <li class="menu-item" data-category="perm">
+            <p class="menu-item-name"><span class="menu-badge">髪質改善</span>デジタルパーマ</p>
+            <p class="menu-item-price">¥16,500〜</p>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <h3 class="menu-category-title">ストレート<span class="menu-category-en" lang="en">STRAIGHT</span></h3>
+        <p class="menu-category-sub">
+          <span class="menu-note-item">※ロング料金あり</span>
+          <span class="menu-note-item">※シャンプー・ブロー込</span>
+          <span class="menu-note-item">※プレックス配合+1,650円</span>
+        </p>
+        <ul>
+          <li class="menu-item" data-category="straight">
+            <p class="menu-item-name">ストレートパーマ</p>
+            <p class="menu-item-price">¥9,900〜</p>
+          </li>
+          <li class="menu-item" data-category="straight">
+            <p class="menu-item-name">縮毛矯正</p>
+            <p class="menu-item-price">¥13,200〜</p>
+          </li>
+          <li class="menu-item" data-category="straight">
+            <p class="menu-item-name">ポイント縮毛矯正</p>
+            <p class="menu-item-price">¥9,900〜</p>
+          </li>
+          <li class="menu-item" data-category="straight">
+            <p class="menu-item-name">フロント縮毛矯正</p>
+            <p class="menu-item-price">¥6,600〜</p>
+          </li>
+          <li class="menu-item" data-category="straight">
+            <p class="menu-item-name"><span class="menu-badge">髪質改善</span>オーダーメイド縮毛矯正</p>
+            <p class="menu-item-price">¥13,200〜</p>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <h3 class="menu-category-title">ヘッドスパ<span class="menu-category-en" lang="en">HEAD SPA</span></h3>
+        <p class="menu-category-sub">
+          <span class="menu-note-item">※シャンプー・ブロー込</span>
+        </p>
+        <ul>
+          <li class="menu-item" data-category="headspa">
+            <p class="menu-item-name">ヘッドスパ</p>
+            <p class="menu-item-price">¥3,650</p>
+          </li>
+          <li class="menu-item" data-category="headspa">
+            <p class="menu-item-name">ヘッドスパ・ケアコース</p>
+            <p class="menu-item-price">¥6,070</p>
+          </li>
+          <li class="menu-item" data-category="headspa">
+            <p class="menu-item-name">ヘッドスパ・プラス</p>
+            <p class="menu-item-price">¥6,070</p>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <h3 class="menu-category-title">シャンプー・ブロー<span class="menu-category-en" lang="en">SHAMPOO</span></h3>
+        <ul>
+          <li class="menu-item" data-category="shampoo">
+            <p class="menu-item-name">シャンプーブロー</p>
+            <p class="menu-item-price">¥2,750</p>
+          </li>
+          <li class="menu-item" data-category="shampoo">
+            <p class="menu-item-name">ブロー</p>
+            <p class="menu-item-price">¥1,650</p>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     ギャラリー
+     ====================================================================== -->
+<section class="section" id="gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <div class="divider"><svg class="motif" aria-hidden="true" focusable="false"><use href="#icon-lamp"/></svg></div>
+    <span class="eyebrow center">Gallery</span>
+    <h2 class="section-title" id="gallery-title">空間</h2>
+
+    <div class="gallery-grid">
+      <figure class="gallery-item gallery-item--tall">
+        <img class="cover-img" src="images/gallery-01-800.jpg"
+             srcset="images/gallery-01-480.jpg 480w, images/gallery-01-800.jpg 800w"
+             sizes="(max-width: 860px) 50vw, 337px" width="800" height="600" loading="lazy"
+             alt="赤い革張りの黒いアンティークチェアと観葉植物">
+        <figcaption class="gallery-caption">アンティークチェア</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img class="cover-img" src="images/gallery-02-800.jpg"
+             srcset="images/gallery-02-480.jpg 480w, images/gallery-02-800.jpg 800w"
+             sizes="(max-width: 860px) 50vw, 337px" width="800" height="600" loading="lazy"
+             alt="歯車がのぞくアンティークの壁時計とペンダントライト">
+        <figcaption class="gallery-caption">歯車の壁時計</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img class="cover-img" src="images/gallery-03-800.jpg"
+             srcset="images/gallery-03-480.jpg 480w, images/gallery-03-800.jpg 800w"
+             sizes="(max-width: 860px) 50vw, 337px" width="800" height="600" loading="lazy"
+             alt="窓辺のアイビーと真鍮のランタン">
+        <figcaption class="gallery-caption">窓辺の緑とランタン</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img class="cover-img" src="images/gallery-04-800.jpg"
+             srcset="images/gallery-04-480.jpg 480w, images/gallery-04-800.jpg 800w"
+             sizes="(max-width: 860px) 50vw, 337px" width="800" height="1066" loading="lazy"
+             alt="草花模様のステンドグラスの置き型照明">
+        <figcaption class="gallery-caption">ステンドグラスの灯り</figcaption>
+      </figure>
+      <figure class="gallery-item gallery-item--tall">
+        <img class="cover-img" src="images/gallery-05-800.jpg"
+             srcset="images/gallery-05-480.jpg 480w, images/gallery-05-800.jpg 800w"
+             sizes="(max-width: 860px) 50vw, 337px" width="800" height="600" loading="lazy"
+             alt="アイアン装飾のペンダントランプと振り子時計">
+        <figcaption class="gallery-caption">真鍮のペンダントライト</figcaption>
+      </figure>
+      <!-- 最下段の隙間を埋めるため、この1枚だけ横長(2マス分)にしている -->
+      <figure class="gallery-item gallery-item--wide">
+        <img class="cover-img" src="images/gallery-06-800.jpg"
+             srcset="images/gallery-06-480.jpg 480w, images/gallery-06-800.jpg 800w"
+             sizes="(max-width: 860px) 50vw, 690px" width="800" height="600" loading="lazy"
+             alt="ドライフラワーのスワッグと額装された風景の版画">
+        <figcaption class="gallery-caption">ドライフラワーと版画</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     ホームケア(oggi otto)
+     ====================================================================== -->
+<section class="section section--deep" id="products" aria-labelledby="products-title">
+  <div class="container">
+    <div class="divider"><svg class="motif" aria-hidden="true" focusable="false"><use href="#icon-lamp"/></svg></div>
+    <span class="eyebrow center">Home Care</span>
+    <h2 class="section-title" id="products-title">おうちでのケアも、丁寧に</h2>
+
+    <div class="products-grid">
+      <div class="products-photo">
+        <img class="cover-img"
+             src="images/products-1000.jpg"
+             srcset="images/products-640.jpg 640w, images/products-1000.jpg 1000w"
+             sizes="(max-width: 860px) 100vw, 510px"
+             width="1000" height="750" loading="lazy"
+             alt="oggi otto のヘアケア商品とドライフラワー">
+      </div>
+      <div class="products-text">
+        <h3>サロン専売の<br>ホームケアライン「oggi otto」</h3>
+        <p>施術で使用しているオーガニック処方のシャンプー・トリートメントは、店頭でもお求めいただけます。サロンでの仕上がりを、ご自宅でも長く楽しんでいただくためのラインです。</p>
+        <ul class="products-points">
+          <li>髪と地肌への負担を抑えた、やさしい処方</li>
+          <li>一人ひとりの髪質に合わせて選べるシリーズ展開</li>
+          <li>店頭でスタイリストが使い方をご案内</li>
+        </ul>
+        <!-- TODO(要確認): oggi otto の掲載可否・商品名の表記・取扱商品の範囲をオーナーに再確認 -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     お知らせ・ブログ(将来はWordPressの最新記事を自動表示する想定)
+     ====================================================================== -->
+<section class="section section--deep" id="newsblog" aria-label="お知らせとブログ">
+  <div class="container">
+    <div class="info-hub-grid">
+
+      <div id="news">
+        <div class="info-col-title">
+          <h2>お知らせ</h2>
+          <!-- TODO(WordPress化): 一覧ページのURLに差し替え -->
+          <a href="#news">一覧を見る ＞</a>
+        </div>
+        <!-- TODO(ダミー): 日付・タイトルはダミー。WordPress化で最新3件を自動出力に置き換え -->
+        <ul>
+          <li class="news-item">
+            <time class="news-date" datetime="2026-07-01">2026.07.01</time>
+            <span class="news-tag">お知らせ</span>
+            <span class="news-title">夏季休業のご案内</span>
+          </li>
+          <li class="news-item">
+            <time class="news-date" datetime="2026-06-10">2026.06.10</time>
+            <span class="news-tag">メニュー</span>
+            <span class="news-title">ヘッドスパメニューをリニューアルしました</span>
+          </li>
+          <li class="news-item">
+            <time class="news-date" datetime="2026-05-20">2026.05.20</time>
+            <span class="news-tag">お知らせ</span>
+            <span class="news-title">土曜日の営業時間を変更しました</span>
+          </li>
+        </ul>
+      </div>
+
+      <div id="blog">
+        <div class="info-col-title">
+          <h2>ブログ</h2>
+          <!-- TODO(WordPress化): 一覧ページのURLに差し替え -->
+          <a href="#blog">一覧を見る ＞</a>
+        </div>
+        <!-- TODO(ダミー): サムネイルはグラデーションの仮置き。記事ができたら <img> に差し替え -->
+        <ul>
+          <li class="blog-item">
+            <div class="blog-thumb" aria-hidden="true"></div>
+            <div>
+              <p class="blog-title">梅雨の時期の髪のお手入れ方法</p>
+              <time class="blog-date" datetime="2026-06-28">2026.06.28</time>
+            </div>
+          </li>
+          <li class="blog-item">
+            <div class="blog-thumb" aria-hidden="true"></div>
+            <div>
+              <p class="blog-title">似合わせカットのご相談、承っています</p>
+              <time class="blog-date" datetime="2026-06-15">2026.06.15</time>
+            </div>
+          </li>
+          <li class="blog-item">
+            <div class="blog-thumb" aria-hidden="true"></div>
+            <div>
+              <p class="blog-title">店内の観葉植物、少し増えました</p>
+              <time class="blog-date" datetime="2026-06-02">2026.06.02</time>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     アクセス・ご予約
+     ====================================================================== -->
+<section class="section section--paper" id="access" aria-labelledby="access-title">
+  <div class="container">
+    <div class="divider"><svg class="motif" aria-hidden="true" focusable="false"><use href="#icon-lamp"/></svg></div>
+    <span class="eyebrow center">Access</span>
+    <h2 class="section-title" id="access-title">アクセス・ご予約</h2>
+
+    <div class="access-grid">
+      <div class="access-info">
+        <!-- TODO(ダミー): 以下の店舗情報はすべてダミー。正式情報の受領後に差し替え -->
+        <dl>
+          <div class="info-block">
+            <dt class="info-label">SALON</dt>
+            <dd class="info-value">HAIR ATELIER Gg</dd>
+          </div>
+          <div class="info-block">
+            <dt class="info-label">ADDRESS</dt>
+            <dd class="info-value">大阪府高槻市上田辺町4-25</dd>
+          </div>
+          <div class="info-block">
+            <dt class="info-label">ACCESS</dt>
+            <dd class="info-value">【JR】中央口から、松坂屋方面に行くとすぐに右側にあるエスカレーターを降りて頂き、グリーンプラザ3号館宝くじ売場を右手に見て直進、1つ目の角を曲がると左手側にレンガの外観の「Gg」があります。
+              <br>
+              【阪急】センター街を抜けて信号を渡り右折、松坂屋を右側に見て直進し、1つ目の角を曲がると左手側にレンガの外観の「Gg」があります。※パン屋プレザンさんのお隣。錦温泉さんのある通りです。</dd>
+          </div>
+          <div class="info-block">
+            <dt class="info-label">HOURS</dt>
+            <dd class="info-value">
+              10：00～20：00
+              <br>
+              ※リピーターのお客様に限り、時間外も承ります。是非ご相談ください。
+              <br>
+              （※最終受付の時間にご予約がない場合は、早めにお店を閉めている場合がございます。）
+              <br>
+              ＊毎週月曜日（時間外は応相談）</dd>
+          </div>
+          <!-- TODO(連絡先が確定したら有効化): 電話・メールの表示
+          <div class="info-block">
+            <dt class="info-label">CONTACT</dt>
+            <dd class="info-value">TEL: <a href="tel:0000000000">000-0000-0000</a><br>MAIL: <a href="mailto:info@example.com">info@example.com</a></dd>
+          </div>
+          -->
+        </dl>
+
+        <!-- TODO(予約システム確定後): LINE予約などの正式な予約リンクに差し替え(現在は仮のリンク。確定したら tel: またはHOTPEPPERのURLに差し替え) -->
+        <a class="cta-btn" href="#access">ご予約・お問い合わせ</a>
+        <p class="reserve-note">LINEからのご予約は、準備ができ次第こちらにご案内します。</p>
+      </div>
+
+      <div class="access-photo">
+        <img class="cover-img"
+             src="images/access-1000.jpg"
+             srcset="images/access-640.jpg 640w, images/access-1000.jpg 1000w"
+             sizes="(max-width: 860px) 100vw, 535px"
+             width="1000" height="750" loading="lazy"
+             alt="HAIR ATELIER Gg の入口。赤レンガの外壁と茶色のドア">
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================================================================
+     フッター
+     ====================================================================== -->
+<footer class="site-footer">
+  <img class="footer-logo" src="images/logo.png" alt="HAIR ATELIER Gg" width="300" height="76" loading="lazy">
+  <p>Private Hair Salon</p>
+  <p class="copyright">© 2026 HAIR ATELIER Gg. All rights reserved.</p>
+</footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
