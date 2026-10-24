@@ -325,6 +325,8 @@ button { font: inherit; color: inherit; }
   letter-spacing: 0.05em;
   color: #EFE9D8;
 }
+/* 狭い画面では文節の区切りで折り返す(単語の途中で改行させない) */
+.hero-sub .phrase { display: inline-block; }
 /* 右下のペンダントランプ(大) */
 .hero-motif {
   position: absolute;
